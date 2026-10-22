@@ -17,39 +17,39 @@ services:
     depends_on:
       - nats-server
 
-  # products-ms:
-  #   build: ./products-ms
-  #   volumes:
-  #     - ./products-ms/src:/usr/src/app/src
-  #   command: npm run start:dev
-  #   environment:
-  #     PORT: "3001"
-  #     NATS_SERVERS: nats://nats-server:4222
-  #     DATABASE_URL: file:./dev.db
-  #   depends_on:
-  #     - nats-server
+  products-ms:
+    build: ./products-ms
+    volumes:
+      - ./products-ms/src:/usr/src/app/src
+    command: npm run start:dev
+    environment:
+      PORT: "3001"
+      NATS_SERVERS: nats://nats-server:4222
+      DATABASE_URL: file:./dev.db
+    depends_on:
+      - nats-server
 
-  # orders-db:
-  #   container_name: orders_database
-  #   image: postgres:16.2
-  #   environment:
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_PASSWORD: postgres
-  #     POSTGRES_DB: ordersdb
-  #   ports:
-  #     - "5432:5432"
-  #   volumes:
-  #     - ./orders-ms/postgres:/var/lib/postgresql/data
+  orders-db:
+    container_name: orders_database
+    image: postgres:16.2
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ordersdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./orders-ms/postgres:/var/lib/postgresql/data
 
-  # orders-ms:
-  #   build: ./orders-ms
-  #   volumes:
-  #     - ./orders-ms/src:/usr/src/app/src
-  #   command: npm run start:dev
-  #   environment:
-  #     PORT: "3002"
-  #     NATS_SERVERS: nats://nats-server:4222
-  #     DATABASE_URL: postgres://postgres:postgres@orders-db:5432/ordersdb?schema=public
-  #   depends_on:
-  #     - orders-db
-  #     - nats-server
+  orders-ms:
+    build: ./orders-ms
+    volumes:
+      - ./orders-ms/src:/usr/src/app/src
+    command: npm run start:dev
+    environment:
+      PORT: "3002"
+      NATS_SERVERS: nats://nats-server:4222
+      DATABASE_URL: postgres://postgres:postgres@orders-db:5432/ordersdb?schema=public
+    depends_on:
+      - orders-db
+      - nats-server
