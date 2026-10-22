@@ -2,10 +2,22 @@
 
 1. Clonar el repositorio
 2. Crear un `.env` basado en el archivo `.env.template`
-3. Ejecutar el comando:
+3. Ejcutar el siguiente comando para actualizar los submodules:
+
+   ```bash
+   git submodule update --init --recursive
+   ```
+
+4. Ejecutar el comando:
 
    ```bash
    docker compose up --build
+   ```
+
+   ó
+
+   ```bash
+   npm run start:dev
    ```
 
 ### Pasos para crear los Git Submodules
