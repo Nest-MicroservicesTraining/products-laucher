@@ -1,0 +1,14 @@
+{
+  "name": "products-launcher",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nest-MicroservicesTraining/products-laucher.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "docker compose up --build"
+  }
+}
